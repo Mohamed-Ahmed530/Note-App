@@ -1,0 +1,51 @@
+/* Global Style */
+
+html {
+    scroll-behavior: smooth;
+}
+body{
+    font-family: "Roboto", sans-serif;
+}
+
+
+.act {
+    border: 1px solid white;
+    color: rgb(255, 255, 255) !important;
+    padding: 8px 20px;
+    border-radius: 10px;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
+.text-main {
+    color:  #FFC801 !important;
+}
+
+.bg-main{
+    background-color:  rgb(53, 53, 102) !important;
+}
+
+.btn-main {
+    background-color:  rgb(53, 53, 102);
+    padding: 7px 20px;
+    border-radius: 5px;
+    color: #FFC801;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+.btn-main:disabled {
+    cursor: not-allowed;
+    background-color: rgb(12, 0, 51);
+    color: #FFC801;
+}
+.btn-main:disabled:hover {
+    background-color:  rgb(11, 0, 45);
+    color: #FFC801;
+}
+.btn-main:hover {
+    background-color:   rgb(24, 24, 72);
+    color: #FFC801;
+}

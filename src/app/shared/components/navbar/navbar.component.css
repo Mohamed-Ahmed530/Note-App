@@ -1,0 +1,11 @@
+nav{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 10;
+    transition: all 0.5s ease-out;
+}
+.pages a:hover{
+    color:  #ffe894 !important;
+}
