@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -18,11 +19,21 @@ export class RegisterComponent {
   private readonly router = inject(Router)
   private readonly toastrService = inject(ToastrService)
 
+  registerSubscription:Subscription = new Subscription();
+  
 
   errorMsg:any;
 
+  isvalid:boolean = false
+
+  togilPassword:boolean = false
+
+  toggle(){
+    this.togilPassword = !this.togilPassword;
+  }
 
   private readonly formBuilder = inject( FormBuilder )
+
     
   registerForm:FormGroup = this.formBuilder.group({
     name:[null , [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
@@ -32,12 +43,11 @@ export class RegisterComponent {
     phone:[null, [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)]]
   },)
 
-  isvalid:boolean = false
 
   registerUser(){
 
     if (this.registerForm.valid) {
-      this.userService.signUp(this.registerForm.value).subscribe({
+      this.registerSubscription = this.userService.signUp(this.registerForm.value).subscribe({
         next:(res)=>{
           this.isvalid = true
           // console.log(res);
@@ -56,6 +66,10 @@ export class RegisterComponent {
         }
       })
     }
+  }
+
+  ngOnDestroy(): void {
+    this.registerSubscription.unsubscribe();
   }
 
 }

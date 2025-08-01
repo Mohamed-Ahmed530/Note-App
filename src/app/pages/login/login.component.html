@@ -4,7 +4,7 @@
         
             <form [formGroup]="loginForm" class="w-75 p-3 rounded-4 shadow-lg bg-white mx-auto mt-5" (submit)="loginUser()">
             
-                <h1 class="text-main fw-light">Login</h1>
+                <h1 class="text-main fw-light my-3">Login</h1>
             
                 @if (errorMsg) {
                     <div class="mt-1 alert alert-danger text-center w-75 mx-auto">
@@ -15,7 +15,7 @@
             
                 <div class="my-3">
                     <label for="email">Email<b>:</b></label>
-                    <input formControlName="email" id="email" class="form-control" type="email" [ngClass]="{
+                    <input formControlName="email" id="email" class="" type="email" [ngClass]="{
                         'is-invalid':loginForm.get('email')?.errors && loginForm.get('email')?.touched,
                         'is-valid':!loginForm.get('email')?.errors && loginForm.get('email')?.touched}">
             
@@ -32,11 +32,21 @@
             
                 </div>
             
-                <div class="my-3">
+                <div class="my-3 ">
                     <label for="password">Password<b>:</b></label>
-                    <input formControlName="password" id="password" class="form-control" type="password"[ngClass]="{
+                    <div class="position-relative">
+                    <input formControlName="password" id="password" class="" [type]="!togilPassword ? 'password' : 'text' "[ngClass]="{
                     'is-invalid':loginForm.get('password')?.errors && loginForm.get('password')?.touched,
                     'is-valid':!loginForm.get('password')?.errors && loginForm.get('password')?.touched}">
+                    
+                    @if (!togilPassword) {
+                        <span (click)="toggle()" class="togle position-absolute cursor top-0 end-0" > <i class="fa-solid fa-eye"></i> </span>
+                    }@else{
+                        <span (click)="toggle()" class="togle position-absolute cursor top-0 end-0" > <i class="fa-solid fa-eye-slash"></i> </span>
+                    }
+                    
+
+                    </div>
             
                     @if (loginForm.get("password")?.touched && loginForm.get("password")?.errors ) {
                         <div class="mt-1 alert alert-danger">
@@ -48,12 +58,17 @@
                             }
                         </div>
                     }
+
+
+
                 </div>
             
             
                 <button type="submit" class="fw-light fs-5 btn-main" [disabled]="loginForm.invalid" >Login 
                 @if (isvalid == true) {<span> <i class="fa fa-spin fa-spinner ms-2 text-white"></i> </span>}
                 </button>
+                <a routerLink="/register" class=" px-2" >SignUp<i class="fa-solid fa-question"></i></a>
+
             
             
             </form>

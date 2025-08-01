@@ -6,6 +6,7 @@
 
 ## 🔥 Features
 
+- Authentication
 - Add new notes
 - Edit existing notes
 - Delete notes

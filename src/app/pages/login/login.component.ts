@@ -1,38 +1,46 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../core/services/user/user.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
 
   private readonly userService = inject(UserService)
   private readonly router = inject(Router)
   private readonly toastrService = inject(ToastrService)
   
+  loginSubscription:Subscription = new Subscription();
+
 
   errorMsg:any;
 
+  togilPassword:boolean = false
+
+  toggle(){
+    this.togilPassword = !this.togilPassword;
+  }
+  
   private readonly formBuilder = inject( FormBuilder )
-    
+
   loginForm:FormGroup = this.formBuilder.group({
     email:[null, [Validators.required, Validators.email]],
     password:[null, [Validators.required, Validators.pattern(/^[A-Z]\w{6,}$/) ]],
   },)
 
   isvalid:boolean = false
-
+    
   loginUser(){
-
     if (this.loginForm.valid) {
-      this.userService.signIn(this.loginForm.value).subscribe({
+      this.loginSubscription = this.userService.signIn(this.loginForm.value).subscribe({
         next:(res)=>{
           // console.log(res);
           this.isvalid = true
@@ -54,4 +62,9 @@ export class LoginComponent {
       })
     }
   }
+
+  ngOnDestroy(): void {
+    this.loginSubscription.unsubscribe();
+  }
+
 }

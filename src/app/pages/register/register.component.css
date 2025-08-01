@@ -1,3 +1,20 @@
-/* .inner{
-    margin-top: 50px;
-} */
+input{
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+input:focus {
+    border-color: #353566;
+    box-shadow: 0 0 5px rgba(120, 79, 255, 0.5);
+}
+
+
+.togle{
+    margin-top: 12px;
+    margin-right: 10px;
+}

@@ -6,18 +6,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto pages mb-2 mb-lg-0">
-                <li class="nav-item fs-5 mx-3">
-                    <a class="text-decoration-none text-main fw-light"  routerLinkActive="act" routerLink="/home" >Home</a>
-                </li>
-                <li class="nav-item fs-5 mx-3 ">
-                    <a class="text-decoration-none text-main fw-light"  routerLinkActive="act" routerLink="/login" >Login</a>
-                </li>
-                <li class="nav-item fs-5 mx-3 ">
-                    <a class="text-decoration-none text-main fw-light"  routerLinkActive="act" routerLink="/register" >Register</a>
-                </li>
-                <li class="nav-item fs-5 mx-4 ">
-                    <a class="text-decoration-none text-main fw-light cursor"  (click)="logOut()">Logout <i class="fa-solid fa-arrow-right-from-bracket ms-1"></i></a>
-                </li>
+                @if (isLogin()) {
+                    <li class="nav-item fs-5 mx-3">
+                        <a class="text-decoration-none text-main fw-light"  routerLinkActive="act" routerLink="/home" >Home</a>
+                    </li>
+                    <li class="nav-item fs-5 mx-4 ">
+                        <a class="text-decoration-none text-main fw-light cursor"  (click)="logOut()">Logout <i class="fa-solid fa-arrow-right-from-bracket ms-1"></i></a>
+                    </li>
+                }@else{
+                    <li class="nav-item fs-5 mx-3 ">
+                        <a class="text-decoration-none text-main fw-light"  routerLinkActive="act" routerLink="/login" >Login</a>
+                    </li>
+                    <li class="nav-item fs-5 mx-3 ">
+                        <a class="text-decoration-none text-main fw-light"  routerLinkActive="act" routerLink="/register" >Register</a>
+                    </li>
+                }
             </ul>
         </div>
     </div>

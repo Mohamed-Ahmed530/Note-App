@@ -14,7 +14,8 @@ import { provideToastr } from 'ngx-toastr';
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes,
     withViewTransitions(),
-    withInMemoryScrolling({scrollPositionRestoration:"top"}), withHashLocation()),
+    withInMemoryScrolling({scrollPositionRestoration:"top"}), 
+    withHashLocation()),
     provideClientHydration(withEventReplay()), 
     provideHttpClient(withFetch(), withInterceptors([headerInterceptor, loadingInterceptor]) ) ,
     provideAnimations(),

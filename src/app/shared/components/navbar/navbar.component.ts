@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -9,6 +9,10 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class NavbarComponent {
   private router = inject(Router)
+
+  isLogin = input<boolean>(true);
+
+
 
   logOut(){
     localStorage.removeItem("token")

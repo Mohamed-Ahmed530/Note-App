@@ -5,8 +5,8 @@
         Add New Note
     </button>
 
-    <div class="my-2">
-        <input [(ngModel)]="text" type="search" class="form-control w-50 mx-auto" placeholder="Search..." >
+    <div class="my-2 input-search">
+        <input [(ngModel)]="text" type="search" class="custom_input w-25" placeholder="Search..." >
     </div>
 
     <div class="modal fade" id="addNote" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addNoteLabel" aria-hidden="true">
@@ -24,12 +24,12 @@
                     
                         <div class="my-3">
                             <label for="title">Title<b>:</b></label>
-                            <input formControlName="title" id="title" class="form-control" type="text">
+                            <input formControlName="title" id="title" class="custom_input" type="text">
                         </div>
                         
                         <div class="my-3">
                             <label for="content">Content<b>:</b></label>
-                            <textarea formControlName="content" class="form-control" id="content"></textarea>
+                            <textarea formControlName="content" class="custom_input" id="content"></textarea>
                         </div>
                     
                     </div>
