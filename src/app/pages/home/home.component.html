@@ -49,7 +49,7 @@
     <!--  -->
 
     <div class="row g-3 my-2">
-        @for (note of notesList | search: text ; track $index) {
+        @for (note of notesList() | search: text() ; track $index) {
             <div class="col-md-3 col-lg-4">
                 <div class="inner shadow-lg rounded-4 p-3 overflow-hidden">
                     <h5 class="fw-bolder">Title: </h5>

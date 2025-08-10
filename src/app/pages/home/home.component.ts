@@ -1,4 +1,11 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnDestroy,
+  OnInit,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { NoteService } from '../../core/services/note/note.service';
 import {
   FormBuilder,
@@ -29,9 +36,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   updateSubscription: Subscription = new Subscription();
   deleteSubscription: Subscription = new Subscription();
 
-  text: string = '';
+  text = signal(<string>"");
 
-  notesList: INote[] = [];
+  notesList = signal(<INote[]>[]);
 
   ngOnInit(): void {
     this.getUserNote();
@@ -72,11 +79,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   getUserNote() {
     this.getSubscription = this.noteService.getUserNotes().subscribe({
       next: (res) => {
-        this.notesList = res.notes;
+        this.notesList.set(res.notes);
         // console.log(this.notesList);
       },
       error: (err) => {
-        this.notesList = [];
+        this.notesList.set([]);
       },
     });
   }
@@ -93,7 +100,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           // console.log(res);
           this.getUserNote();
           this.toastrService.success('The note was updated successfully');
-        }
+        },
       });
   }
 
@@ -108,7 +115,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       next: (res) => {
         this.getUserNote();
         this.toastrService.success('The note was deleted successfully');
-      }
+      },
     });
   }
 
