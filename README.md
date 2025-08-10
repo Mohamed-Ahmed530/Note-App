@@ -26,7 +26,7 @@
 
 ## 🚀 Live Demo
 
-**[View Project Online](https://note-app-virid-chi.vercel.app)**
+**[View Project Online](https://note-app-rust-two.vercel.app)**
 
 ---
 
@@ -39,8 +39,8 @@
 ## 📬 Contact
 
 Feel free to reach out for feedback or collaboration:\
-**Email:** [mohamed.ahmed.mmaa.530@gmail.com](mailto\:mohamed.ahmed.mmaa.530@gmail.com)\
-**LinkedIn:** [mohamed-ahmed-m7a5](https://www.linkedin.com/in/mohamed-ahmed-m7a5)
+**Email:** [mohamed.ahmed.fe1@gmail.com](mohamed.ahmed.fe1@gmail.com)\
+**LinkedIn:** [mohamed-ahmed-fe](https://www.linkedin.com/in/mohamed-ahmed-fe/)
 
 ---
 
